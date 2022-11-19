@@ -1,29 +1,50 @@
-import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import triang 
-import numpy as np 
-import matplotlib.pyplot as plt 
+import random
+import math
+import scipy.stats as st  
 from statsmodels.distributions.empirical_distribution import ECDF
+import numpy as np  
+from random import choice
+from scipy.stats import norm  
+# https://www.geeksforgeeks.org/python-triangular-distribution-in-statistics/
 
 
-
-
-numargs = triang .numargs 
-a = 0.35
-rv = triang (a) 
-    
-print ("RV : \n", rv)  
-
-  
-distribution = np.linspace(0, np.minimum(rv.dist.b, 3)) 
-print("Distribution : \n", distribution) 
-     
+# numargs = triang .numargs 
+# a = 0.35
+# rv = triang (a) 
+# print ("RV : \n", rv)  
+# distribution = np.linspace(0, np.minimum(rv.dist.b, 3)) 
+# print("Distribution : \n", distribution) 
 # plt.plot(distribution, rv.pdf(distribution)) 
 
 
-R = triang .rvs(0.35, size = 100) 
-print ("Random Variates : \n", R) 
+# #2.1
+# R = triang .rvs(0.35, size = 100) 
+# print ("Random Variates : \n", R) 
 
-ecdf = ECDF(R)
-plt.plot(ecdf.x, ecdf.y)
-plt.show()
+
+# #2.2
+# R = triang .rvs(0.35, size = 1000) 
+# ecdf = ECDF(R)
+# plt.plot(ecdf.x, ecdf.y)
+# plt.show()
+
+#3.1
+expected_value = lambda values: sum(values) / len(values)
+standard_deviation = lambda values, expected_value: np.sqrt(sum([(v - expected_value)**2 for v in values])  / len(values))
+
+theta = 0.35
+size = 10000
+population = np.random.triangular(0, theta, 1, size)
+mean = expected_value(population)
+print(
+    '''overall population:
+            expected value: {0}
+            standard deviation: {1}
+    '''.format(mean, standard_deviation(population, mean))
+)
+
+
+
+
