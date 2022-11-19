@@ -1,0 +1,29 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import triang 
+import numpy as np 
+import matplotlib.pyplot as plt 
+from statsmodels.distributions.empirical_distribution import ECDF
+
+
+
+
+numargs = triang .numargs 
+a = 0.35
+rv = triang (a) 
+    
+print ("RV : \n", rv)  
+
+  
+distribution = np.linspace(0, np.minimum(rv.dist.b, 3)) 
+print("Distribution : \n", distribution) 
+     
+# plt.plot(distribution, rv.pdf(distribution)) 
+
+
+R = triang .rvs(0.35, size = 100) 
+print ("Random Variates : \n", R) 
+
+ecdf = ECDF(R)
+plt.plot(ecdf.x, ecdf.y)
+plt.show()
