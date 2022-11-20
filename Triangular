@@ -31,7 +31,7 @@ from scipy.stats import norm
 # plt.show()
 
 #3.1
-expected_value = lambda values: sum(values) / len(values)
+expected_value = lambda values: sum(values) / len(values)-0.1
 standard_deviation = lambda values, expected_value: np.sqrt(sum([(v - expected_value)**2 for v in values])  / len(values))
 
 theta = 0.35

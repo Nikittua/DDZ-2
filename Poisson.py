@@ -27,7 +27,7 @@ r = poisson.rvs(mu, size=count)
 cdf = ECDF(r)
 plt.plot(cdf.x, cdf.y, label="statmodels")
 plt.legend()
-# plt.show()
+plt.show()
 
 
 
@@ -51,10 +51,10 @@ k_hat, theta_hat = estimate_pars(r)
 
 #3.1 Метод макс правдоподобия
 
-theta_A = r / np.sum(r)
-def mle(R, theta):
-  return (math.factorial(np.sum(R)) // (np.prod([math.factorial(r) for r in R]))) * \
-         np.prod([theta[i]**R[i] for i in range(len(R))])
+# theta_A = r / np.sum(r)
+# def mle(R, theta):
+#   return (math.factorial(np.sum(R)) // (np.prod([math.factorial(r) for r in R]))) * \
+#          np.prod([theta[i]**R[i] for i in range(len(R))])
 
-ml_A = mle(r ,theta_A)
-print(ml_A)
+# ml_A = mle(r ,theta_A)
+# print(ml_A)
