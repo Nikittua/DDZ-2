@@ -1,12 +1,12 @@
 import matplotlib.pyplot as plt
-from scipy.stats import triang 
+from scipy.stats import triang
 import random
 import math
-import scipy.stats as st  
+import scipy.stats as st
 from statsmodels.distributions.empirical_distribution import ECDF
-import numpy as np  
+import numpy as np
 from random import choice
-from scipy.stats import norm  
+from scipy.stats import norm
 # https://www.geeksforgeeks.org/python-triangular-distribution-in-statistics/
 
 
@@ -25,26 +25,70 @@ from scipy.stats import norm
 
 
 # #2.2
-# R = triang .rvs(0.35, size = 1000) 
+# R = triang.rvs(0.35, size = 1000)
 # ecdf = ECDF(R)
+# print(R)
 # plt.plot(ecdf.x, ecdf.y)
 # plt.show()
 
 #3.1
-expected_value = lambda values: sum(values) / len(values)-0.1
-standard_deviation = lambda values, expected_value: np.sqrt(sum([(v - expected_value)**2 for v in values])  / len(values))
+#Лекции страница 9
+# expected_value = lambda values: sum(values) / len(values)
+# standard_deviation = lambda values, expected_value: np.sqrt(sum([(v - expected_value)**2 for v in values])/len(values))
+
+# theta = 0.35
+# size = 1000
+# population = np.random.triangular(0, theta, 1, size)
+# mean = expected_value(population)*3-1
+# print(
+#     '''overall population:{1}
+#             expected value: {0}
+#     '''.format(mean, standard_deviation(population, mean))
+# )
+
+
+# log_likelihood = lambda rate: sum(np.log(expon.pdf(v, scale=rate)) for v in R)
+
+# rates = np.arange(1, 8, 0.01)
+# estimates = [log_likelihood(r) for r in rates]
+
+# plt.xlabel('parameter')
+# plt.plot(rates, estimates)
+# print('parameter value: ', rates[estimates.index(max(estimates))])
+
+
+
+# def get_sample(n):
+#     return np.random.triangular(0, 0.35, 1, n)
+
+# #3.2
+# sample = get_sample(1000)
+# ecdf = ECDF(sample)
+# plt.plot(ecdf.x, ecdf.y)
+# # plt.show()
+
+#3.3
+# log_likelihood = lambda rate: sum(np.log(triang.pdf(v, rate)) for v in sample)
+# rate = np.arange(0, 1, 0.01)
+# estimate = [log_likelihood(r) for r in rate]
+# plt.xlabel('parameter')
+# plt.plot(rate, estimate)
+# # print('parameter value: ', rate[estimate.index(max(estimate))])
+
+
+
+def Triangle(theta):
+    u = random.uniform(0, 1)
+    if u < theta:
+        return math.sqrt(u * theta)
+    else:
+        return 1 - math.sqrt((1-theta-u+u*theta))
 
 theta = 0.35
-size = 10000
-population = np.random.triangular(0, theta, 1, size)
-mean = expected_value(population)
-print(
-    '''overall population:
-            expected value: {0}
-            standard deviation: {1}
-    '''.format(mean, standard_deviation(population, mean))
-)
-
-
+sample = []
+for _ in range(10):
+    n = Triangle(theta)
+    sample.append(n)
+print(sample)
 
 
