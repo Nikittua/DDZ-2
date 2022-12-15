@@ -19,9 +19,9 @@ import sys
 
 def emperical(viborka,chisla):
     x=[]
-    for i in range(len(viborka)):
+    for i in range(len(chisla)):
       sum = 0
-      for j in range(len(chisla)):
+      for j in range(len(viborka)):
         if viborka[j] < chisla[i]:
           sum += 1
       x.append(sum/len(viborka))
@@ -47,6 +47,15 @@ theta = 21.5
 #   ecdf(sample)
 
     
+def emperical(viborka,chisla):
+    x=[]
+    for i in range(len(chisla)):
+      sum = 0
+      for j in range(len(viborka)):
+        if viborka[j] < chisla[i]:
+          sum += 1
+      x.append(sum/len(viborka))
+    return x
 
 
 def DMN(t,poism,poisn):
@@ -59,13 +68,10 @@ def DMN(t,poism,poisn):
   return math.sqrt(len(poisn)*len(poism)/(len(poism)+len(poisn)))*supr
 
   
-t = np.arange(0, 35, 1)
-sample = np.random.poisson(theta, 35)
-sample2 = np.random.poisson(theta, 35)
-print(sample)
-print(DMN(t,sample,sample2))
-
-
+t = np.arange(0. , 50. , 0.001)
+sample = np.random.poisson(theta, 5)
+plt.scatter(t, emperical(sample, t), s=0.4)
+plt.show()
 
 
 

@@ -1,2 +1,0 @@
-def Mandelbrot_Viewer():
-

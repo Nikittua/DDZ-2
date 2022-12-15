@@ -90,5 +90,3 @@ for _ in range(10):
     n = Triangle(theta)
     sample.append(n)
 print(sample)
-
-
