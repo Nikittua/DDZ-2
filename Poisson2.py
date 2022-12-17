@@ -175,20 +175,24 @@ def HW2():
 
 
 if __name__ == '__main__':
-    HW2()
-    # theta = 21.5
-    # poiss = Poisson(theta)
-    # nlist = [5, 10, 50, 100, 200, 400, 600, 800, 1000]
-    # samples = []
-    # for n in nlist:
-    #     sample = poiss.sampling(n)
-    #     samples.append(sample)
-    # for sample in samples:
-    #     fig, ax = plt.subplots()
-    #     Y, bins, patches = ax.hist(sample, 11, alpha=0.5)
-    #     X = []
-    #     for i in range(len(bins)-1):
-    #         X.append((bins[i]+bins[i+1])/2)
-    #     plt.plot(X, Y)
-    #     fig.tight_layout()
-    #     plt.show()
+    # HW2()
+    poiss = Poisson(21.5)
+    nlist = [5, 10, 50, 100, 200, 400, 600, 800, 1000]
+    samples = []
+    for n in nlist:
+        sample = poiss.sampling(n)
+        samples.append(sample)
+
+    print(samples)
+    for sample in samples:
+        fig, ax = plt.subplots()
+        Y, bins, patches = ax.hist(sample, 11, alpha=0.5)
+        X = []
+        for i in range(len(bins)-1):
+            X.append((bins[i]+bins[i+1])/2)
+        plt.plot(X, Y)
+        fig.tight_layout()
+        plt.show()
+
+
+
