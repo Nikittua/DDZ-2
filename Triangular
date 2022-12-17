@@ -86,7 +86,41 @@ def Triangle(theta):
 
 theta = 0.35
 sample = []
-for _ in range(10):
-    n = Triangle(theta)
-    sample.append(n)
-print(sample)
+nlist = [5, 10, 100,200,400,600,800,1000]
+for n in nlist:
+    for _ in range(n):
+        n = Triangle(theta)
+        sample.append(n)
+    ecdf = ECDF(sample)
+    plt.plot(ecdf.x, ecdf.y)
+    plt.show() 
+    print(ecdf.x)   
+    # print(sample)
+
+
+
+
+
+
+
+
+# X = np.arange(-0.1, 1.1, 0.01)
+# def eCDF(t,sample):
+    
+# def CDFt(x, theta):
+#     if x<0:
+#         return 0
+#     if x<=theta:
+#         return (x**2)/theta
+#     if x<=1:
+#         return 1-((1-x)**2)/(1-theta)
+#     return 1
+
+# Y_CDF = [CDFt(x, theta) for x in X]
+
+# for sample in samples:
+#     Y_CDF = [eCDF(x, theta) for x in X]
+#     plt.plot(X, Y_CDF, label='n = {}'.format(n))
+#     plt.plot(X, Y_CDF, label='CDF')
+#     plt.legend()
+#     plt.show()
